@@ -23,13 +23,7 @@ const signupController = async (req, res) => {
       password: hashPasswaord,
     });
 
-    // newUser jo abhi  create hua hai
-  // const newUser =await User.findById(user._id);
-
-    // return res.status(201).json({
-    //   // default 200 status
-    //   user,
-    // });
+   
 
     return res.send(success(201,"user is created (signed up)"));
   } catch (e) {
@@ -117,18 +111,6 @@ const refreshAccessToken = async (req, res) => {
   }
 };
 
-const logoutController = async (req, res)=>{
- try {
-  res.clearCookie('jwt',{
-    httpOnly:true,
-    secure:true
-  })
-  return res.send(success(200, "User Log out"));
- } catch (e) {
-  res.send(error(500,e.message))
- }
-
-}
 
 
 // internal function
@@ -160,5 +142,5 @@ module.exports = {
   logInController,
   signupController,
   refreshAccessToken,
-  logoutController
+  
 };

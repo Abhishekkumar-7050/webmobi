@@ -4,7 +4,7 @@ require('dotenv').config()
 const {connectDB} = require('./db/index.js')
 const authRouter = require('./routers/authRtrs.js')
 
-const userRouter = require('./routers/userRouter.js')
+ const requreUser = require('./middlewares/requireUser.js')
 const morgon = require('morgan');
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
@@ -32,9 +32,9 @@ app.use(cors({
 
 app.use('/auth',authRouter);
 
-app.use('/user',userRouter)
-app.get('/',(req,res)=>{
-    res.status(200).send("ok from server");
+
+app.get('/',requreUser,(req,res)=>{
+    res.status(200).send("yes user is authenticate");
 })
  
 
